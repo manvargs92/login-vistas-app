@@ -24,6 +24,10 @@
           filled
           dense
         ></v-text-field>
+        <v-checkbox
+          v-model="esAdmin"
+          label="Permisos de Administrador"
+        ></v-checkbox>
         <v-btn
           :disabled="estaDesactivado"
           @click="registrarUsuario()"
@@ -49,6 +53,7 @@ export default {
       usuario: "",
       contrasenia: "",
       estaDesactivado: true,
+      esAdmin: false,
       alerta: {
         ver: false,
         mensaje: "",
@@ -64,6 +69,7 @@ export default {
           nombre: this.nombre,
           usuario: this.usuario,
           contrasenia: this.contrasenia,
+          admin: String(this.esAdmin),
         };
 
         let respuesta = await postCreateUser(body);

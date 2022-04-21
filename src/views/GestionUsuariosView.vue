@@ -18,5 +18,3 @@ export default {
   components: { MenuGestion },
 };
 </script>
-
-<style></style>

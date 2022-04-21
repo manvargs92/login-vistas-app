@@ -1,19 +1,17 @@
 <template>
   <div>
-    <div v-if="this.$route.path != '/login'">
+    <div>
       <v-app-bar app>
         <v-app-bar-nav-icon
           @click="mostrarMenu = !mostrarMenu"
         ></v-app-bar-nav-icon>
         <v-toolbar-title>{{ this.$route.name }}</v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-toolbar-title
-          >Tiempo restante de sesión: {{ minutos | tiempo }}:{{
-            segundos | tiempo
-          }}</v-toolbar-title
-        >
+        <v-toolbar-title>
+          Tiempo restante de sesión: {{ minutos | tiempo }}:{{ segundos | tiempo }}
+        </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon @click="logout">
+        <v-btn text @click="logout">
           Salir
           <v-icon>mdi-exit-to-app</v-icon>
         </v-btn>
@@ -25,7 +23,12 @@
             Menú
           </v-list-item-title>
           <v-list-item-group v-model="itemSeleccionado" color="indigo">
-            <v-list-item v-for="(item, i) in items" :key="i" :to="item.route">
+            <v-list-item
+              v-for="(item, i) in items"
+              :key="i"
+              :to="item.route"
+              :disabled="item.inhabilitado"
+            >
               <v-list-item-icon>
                 <v-icon>{{ item.icono }}</v-icon>
               </v-list-item-icon>
@@ -85,6 +88,7 @@ export default {
           texto: "Gestión de usuarios",
           icono: "mdi-account-supervisor",
           route: "/gestion",
+          inhabilitado: this.verificaPermisos(),
         },
       ],
     };
@@ -102,8 +106,15 @@ export default {
       this.$store.commit("setDatosUsuario", null);
       this.$router.replace({ name: "Login" });
     },
+
+    verificaPermisos() {
+      var valor = this.$store.state.esAdmin;
+      if (valor == "true") {
+        return false;
+      } else {
+        return true;
+      }
+    },
   },
 };
 </script>
-
-<style></style>

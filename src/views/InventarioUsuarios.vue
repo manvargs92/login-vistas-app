@@ -26,10 +26,12 @@ export default {
       nombre: "",
       usuario: "",
       estatus: "",
+      admin: "",
       cabeceras: [
         { text: "Nombre", align: "start", value: "nombre" },
         { text: "Usuario", value: "usuario" },
         { text: "Estatus", value: "estatus" },
+        { text: "Es Administrador", value: "admin" },
       ],
       usuarios: [],
     };
@@ -39,8 +41,7 @@ export default {
     let respuesta = await postReadAllUsers();
     console.log(respuesta);
     this.usuarios = respuesta.data.mensaje;
-  }
+  },
 };
 </script>
 
-<style></style>

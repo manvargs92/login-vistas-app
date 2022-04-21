@@ -23,7 +23,7 @@
       transition="scale-transition"
     >
       <v-card>
-        <v-card-title>Tiempo de sesión permitida<br>terminado</v-card-title>
+        <v-card-title>Tiempo de sesión permitida<br />terminado</v-card-title>
         <v-card-text>Serás reenviado al incio de sesión</v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>

@@ -26,4 +26,10 @@ function postDeleteUser(body) {
   return axios.post(BCKND_DELETE_USER_ENDPOINT, body);
 }
 
-export { postCreateUser, postReadUser, postReadAllUsers, postUpdateUser, postDeleteUser };
+export {
+  postCreateUser,
+  postReadUser,
+  postReadAllUsers,
+  postUpdateUser,
+  postDeleteUser,
+};

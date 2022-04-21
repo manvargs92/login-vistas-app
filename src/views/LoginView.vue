@@ -102,6 +102,7 @@ export default {
                   "setUsuario",
                   respuesta.data.mensaje.usuario
                 );
+                this.$store.commit("setEsAdmin", respuesta.data.mensaje.admin);
                 this.$router.replace({ name: "Bienvenida" });
               } else {
                 this.mostrarAlerta(
@@ -149,5 +150,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

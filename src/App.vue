@@ -6,6 +6,7 @@
         @click="restableceDialogoYCronSesion"
       />
       <MenuNavegacion
+        v-if="this.$route.path != '/login'"
         :minutos="minutos"
         :segundos="segundos"
         @click="restableceDialogoYCronSesion"
@@ -107,9 +108,3 @@ export default {
   },
 };
 </script>
-
-<style>
-/* .border {
-  border: 2px dashed orange;
-} */
-</style>

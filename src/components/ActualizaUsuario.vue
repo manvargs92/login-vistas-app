@@ -33,6 +33,10 @@
           filled
           dense
         ></v-text-field>
+        <v-radio-group v-model="esAdmin" label="Pernisos de Administrador">
+          <v-radio label="Asignar" value="true"></v-radio>
+          <v-radio label="Denegar" value="false"></v-radio>
+        </v-radio-group>
         <v-card-actions>
           <v-btn
             :disabled="estaDesactivado"
@@ -65,6 +69,7 @@ export default {
       contrasenia: "",
       usuarioEncontrado: false,
       estaDesactivado: true,
+      esAdmin: null,
       alerta: {
         ver: false,
         mensaje: "",
@@ -111,6 +116,9 @@ export default {
       if (this.contrasenia.length !== 0) {
         body.contrasenia = this.contrasenia;
       }
+      if (this.esAdmin != null) {
+        body.admin = String(this.esAdmin);
+      }
 
       let respuesta = await postUpdateUser(body);
       console.log(respuesta);
@@ -123,10 +131,6 @@ export default {
         this.mostrarAlerta("Hubo Un Error Al Actualizar", "error");
         this.cerrarAlerta();
       }
-
-      // console.log(typeof this.nombre);
-      // console.log(this.nombre.length);
-      // console.log(body);
     },
 
     async activarUsuario() {
@@ -191,6 +195,15 @@ export default {
         this.usuario.length === 0 &&
         this.contrasenia.length === 0
       ) {
+        this.estaDesactivado = true;
+      } else {
+        this.estaDesactivado = false;
+      }
+    },
+    esAdmin(v1, fgf) {
+      console.log("Valor actual: " + v1 + "\n" + "valor anterior: " + fgf);
+
+      if (v1 === null) {
         this.estaDesactivado = true;
       } else {
         this.estaDesactivado = false;

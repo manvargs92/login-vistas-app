@@ -13,12 +13,12 @@
           dense
         ></v-text-field>
         <v-card-actions>
-          <v-btn @click="eliminarUsuario()" color="error"
-            >Eliminar usuario</v-btn
-          >
-          <v-btn @click="desactivarUsuario()" color="warning"
-            >Desactivar usuario</v-btn
-          >
+          <v-btn @click="eliminarUsuario()" color="error">
+            Eliminar usuario
+          </v-btn>
+          <v-btn @click="desactivarUsuario()" color="warning">
+            Desactivar usuario
+          </v-btn>
         </v-card-actions>
       </v-form>
     </v-card>

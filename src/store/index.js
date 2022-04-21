@@ -13,6 +13,7 @@ const vuexVault = new VuexPersist({
     sesionId: state.sesionId,
     datosUsuario: state.datosUsuario,
     usuario: state.usuario,
+    esAdmin: state.esAdmin,
     fotos: state.fotos,
   }),
 });
@@ -28,6 +29,7 @@ export default new Vuex.Store({
     sesionId: "algo",
     datosUsuario: null,
     usuario: null,
+    esAdmin: false,
     fotos: [
       {
         nombre: "Cámara",
@@ -53,19 +55,25 @@ export default new Vuex.Store({
     getUsuario(estado) {
       return estado.usuario;
     },
+    getEsAdmin(estado) {
+      return estado.esAdmin;
+    },
   },
   mutations: {
     setSesionValida(estado, valor) {
       estado.sesionValida = valor;
     },
     setSesionId(estado, valor) {
-      estado.sesionId = valor
+      estado.sesionId = valor;
     },
     setDatosUsuario(estado, valor) {
       estado.datosUsuario = valor;
     },
     setUsuario(estado, valor) {
       estado.usuario = valor;
+    },
+    setEsAdmin(estado, valor) {
+      estado.esAdmin = valor;
     },
     setFotos(estado, valor) {
       estado.fotos.push(valor);
@@ -83,6 +91,9 @@ export default new Vuex.Store({
     },
     setUsuario(contexto, valor) {
       contexto.commit("setUsuario", valor);
+    },
+    setEsAdmin(contexto, valor) {
+      contexto.commit("setEsAdmin", valor);
     },
     setFotos(contexto, valor) {
       contexto.commit("setFotos", valor);
